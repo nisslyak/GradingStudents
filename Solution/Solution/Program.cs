@@ -15,14 +15,6 @@ using System.Diagnostics;
 
 class Result
 {
-
-    /*
-     * Complete the 'gradingStudents' function below.
-     *
-     * The function is expected to return an INTEGER_ARRAY.
-     * The function accepts INTEGER_ARRAY grades as parameter.
-     */
-
     public static List<int> gradingStudents(List<int> grades)
     {
         for (int i = 0; i < grades.Count; i++)
@@ -50,13 +42,14 @@ class Result
         }
         return roundedGrade;
     }
-
 }
 
 class Solution
 {
     public static void Main(string[] args)
     {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
         int gradesCount = Convert.ToInt32(Console.ReadLine().Trim());
 
         List<int> grades = new List<int>();
@@ -68,5 +61,10 @@ class Solution
         }
 
         List<int> result = Result.gradingStudents(grades);
+
+        textWriter.WriteLine(String.Join("\n", result));
+
+        textWriter.Flush();
+        textWriter.Close();
     }
 }
